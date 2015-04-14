@@ -11,6 +11,7 @@ LIVE_USER_GROUPS="audio bumblebee cdrom cdrw clamav console entropy games \
 kvm lp lpadmin messagebus plugdev polkituser portage pulse pulse-access pulse-rt \
 scanner usb users uucp vboxguest vboxusers video wheel"
 LIVE_USER=${SABAYON_USER:-spikeuser}
+LIVE_USER_NAME="Spike"
 LIVE_PERSISTENT_HOME_LABEL="live:/home"
 
 sabayon_setup_autologin() {
@@ -133,7 +134,7 @@ sabayon_setup_live_user() {
             done
         done
         # then setup live user, that is missing
-        useradd -d "/home/${live_user}" -g root -G ${live_groups} -c "Sabayon" \
+        useradd -d "/home/${live_user}" -g root -G ${live_groups} -c "${LIVE_USER_NAME}" \
             -m -N -p "" -s /bin/zsh ${live_uid} "${live_user}"
         return 0
     fi
